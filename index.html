@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: black;
+            background-color: #f4f4f4;
+        }
+
+        /* Header section with contact info */
+        header {
+            background-color: #218a69;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Contact details */
+        #contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            margin-left: 20px;
+        }
+
+        #contact-info h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #contact-info p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        /* Icon styles for contact details */
+        .icon {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .icon img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        /* Navigation Bar */
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+            margin-right: 30px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        nav ul li a:hover {
+            color: #ff6347;
+            font-weight: bold;
+        }
+
+        /* About Me Section Styles */
+        #about {
+            background-color: transparent;
+            color: black;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        #about img {
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        #about h2 {
+            color: #000;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        #about p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Skills Section */
+        #skills {
+            padding: 40px;
+            background-color: #ffffff;
+        }
+
+        #skills h2 {
+            font-size: 32px;
+            color: #218a69;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .skill-card {
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 180px;
+        }
+
+        .skill-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .skill-card h3 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .skill-card p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Projects Section */
+        #projects {
+            padding: 40px;
+            background-color: #ffffff;
+        }
+
+        #projects h2 {
+            font-size: 32px;
+            color: #218a69;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .project {
+            margin-bottom: 20px;
+        }
+
+        .project-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .project-description {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .project-description ul {
+            padding-left: 20px;
+        }
+
+        .project-description li {
+            margin-bottom: 10px;
+        }
+
+        /* Recommendations Section */
+        #recommendations {
+            padding: 40px;
+            background-color: #ffffff;
+        }
+
+        #recommendations h2 {
+            font-size: 32px;
+            color: #6a0dad;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .recommendations-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap; /* Allows recommendations to wrap to next row on smaller screens */
+        }
+
+        .recommendation {
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            font-style: italic;
+            font-size: 16px;
+            color: #666;
+            position: relative;
+            width: 30%;
+        }
+
+        .recommendation::before {
+            content: "“";
+            font-size: 40px;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: #6a0dad;
+        }
+
+        .recommendation::after {
+            content: "”";
+            font-size: 40px;
+            position: absolute;
+            bottom: -10px;
+            right: 10px;
+            color: #6a0dad;
+        }
+        .recommendations-container {
+            margin: 20px 0;
+        }
+        .recommendation {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .leave-recommendation {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .leave-recommendation h2 {
+            margin-bottom: 15px;
+        }
+        .leave-recommendation form {
+            display: flex;
+            flex-direction: column;
+        }
+        .leave-recommendation form label {
+            margin-bottom: 5px;
+        }
+        .leave-recommendation form input, .leave-recommendation form textarea {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+        }
+        .leave-recommendation form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #6a1b9a;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .leave-recommendation form button:hover {
+            background-color: #4a148c;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #6a1b9a;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+            border: none;
+            font-size: 24px;
+        }
+
+        /* Popup modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content button {
+            padding: 10px 20px;
+            background-color: #6a1b9a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: #4a148c;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section with Contact Details and Navigation Bar -->
+    <header>
+        <div id="contact-info">
+            <h2>Sachin Jangid</h2>
+            <div class="icon">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/email.png" alt="Email">
+                <p>Sachinreal2003@gmail.com</p>
+            </div>
+            <div class="icon">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/phone.png" alt="Phone">
+                <p>+91 9518276536</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#recommendations">Recommendations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <img src="profile.JPG" alt="Profile Picture" width="150">
+        <div>
+            <h2 style="color: black;">Hi, I'm Sachin Jangid! 👋</h2>
+            <p style="color: #474747;">
+                I am a passionate web developer with a strong foundation in full-stack development. 
+                My journey in software development has given me experience in building modern 
+                and responsive applications using the latest web technologies. I am always eager 
+                to learn new skills and improve my existing ones.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skill-grid">
+            <!-- Skill 1: Software Engineering -->
+            <div class="skill-card">
+                <img src="https://img.icons8.com/ios/50/000000/computer.png" alt="Software Engineering">
+                <h3>Software Engineering</h3>
+                <p>3 years experience</p>
+            </div>
+
+            <!-- Skill 2: Cloud Computing -->
+            <div class="skill-card">
+                <img src="https://img.icons8.com/ios-filled/50/000000/cloud.png" alt="Cloud Computing">
+                <h3>Cloud Computing</h3>
+                <p>2 years experience</p>
+            </div>
+
+            <!-- Skill 3: HTML -->
+            <div class="skill-card">
+                <img src="https://img.icons8.com/color/48/000000/html-5--v1.png" alt="HTML">
+                <h3>HTML</h3>
+                <p>4 years experience</p>
+            </div>
+
+            <!-- Skill 4: CSS -->
+            <div class="skill-card">
+                <img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS">
+                <h3>CSS</h3>
+                <p>4 years experience</p>
+            </div>
+
+            <!-- Skill 5: JavaScript -->
+            <div class="skill-card">
+                <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript">
+                <h3>JavaScript</h3>
+                <p>3 years experience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3 class="project-title">Signature Generator</h3>
+            <div class="project-description">
+                <ul>
+                    <li>Built a signature generator tool using Flask, HTML, CSS, and JavaScript.</li>
+                    <li>Provides users with stylish and customizable signature designs.</li>
+                    <li>Includes sharing and download options for generated signatures.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Recommendations Section -->
+    <section id="recommendations">
+        <h2>Recommendations</h2>
+        <div class="recommendations-container">
+            <div class="recommendation">
+                "Sachin's attention to detail is remarkable. He delivered our project on time 
+                and exceeded expectations with his creativity."
+            </div>
+            <div class="recommendation">
+                "Working with Sachin was a pleasure. His problem-solving skills and 
+                technical knowledge are outstanding."
+            </div>
+            <div class="recommendation">
+                "Highly recommend Sachin! His work ethic and passion for web development 
+                really shine through."
+            </div>
+            <div class="recommendation">
+                "Sachin consistently delivers high-quality work, balancing both creativity and 
+                functionality in his projects."
+            </div>
+        </div>
+    </section>
+
+    <!-- Leave a Recommendation Section -->
+    <section id="leave-recommendation" class="leave-recommendation">
+        <h2>Leave a Recommendation</h2>
+        <form id="recommendationForm">
+            <label for="name">Name (Optional)</label>
+            <input type="text" id="name" name="name" placeholder="Your Name">
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Your Recommendation" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" onclick="scrollToTop()">⬆️</button>
+
+    <!-- Popup Modal -->
+    <div id="thankYouModal" class="modal">
+        <div class="modal-content">
+            <p>Thanks for Leaving a Recommendation.</p>
+            <button id="okButton">OK</button>
+        </div>
+    </div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Modal functionality
+        const form = document.getElementById('recommendationForm');
+        const modal = document.getElementById('thankYouModal');
+        const okButton = document.getElementById('okButton');
+
+        // Ensure that the form submit event works properly
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from actually submitting
+            console.log("Form submitted!"); // Check if this logs to the console
+            modal.style.display = 'flex'; // Show modal
+        });
+
+        // Hide the modal when "OK" is clicked
+        okButton.addEventListener('click', function() {
+            modal.style.display = 'none'; // Hide modal
+        });
+
+        // Hide modal if user clicks outside the modal content
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
